@@ -1,15 +1,14 @@
 import javax.swing.*;
-import java.awt.event.*;
 
 public class LoginFrame extends JFrame {
     private JTextField emailField;
     private JPasswordField passwordField;
-    private JButton loginButton, signupButton;
+    private JButton loginButton, signupButton, resetPasswordButton;
 
     public LoginFrame() {
         setTitle("Airline Reservation - Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(350, 220);
+        setSize(350, 270);  // Increased height for new button
         setLocationRelativeTo(null);
         setLayout(null);
 
@@ -30,16 +29,25 @@ public class LoginFrame extends JFrame {
         add(passwordField);
 
         loginButton = new JButton("Login");
-        loginButton.setBounds(60, 120, 100, 25);
+        loginButton.setBounds(30, 120, 90, 25);
         add(loginButton);
 
         signupButton = new JButton("Signup");
-        signupButton.setBounds(180, 120, 100, 25);
+        signupButton.setBounds(130, 120, 90, 25);
         add(signupButton);
+
+        resetPasswordButton = new JButton("Reset Password");
+        resetPasswordButton.setBounds(80, 160, 150, 25);
+        add(resetPasswordButton);
 
         loginButton.addActionListener(e -> handleLogin());
         signupButton.addActionListener(e -> {
             new SignupFrame(); // Open signup form
+            dispose();
+        });
+
+        resetPasswordButton.addActionListener(e -> {
+            new ResetPasswordFrame();  // Open Reset Password form
             dispose();
         });
 
